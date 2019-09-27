@@ -5,17 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AukcioProject
-{
+{   
     class Program
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            //Festmeny(cim, festo, stilus, licitekSzama, legmagasabbLicit, legutolsoLicitIdeje);
+            //string festmeny = "Ablak Vasarellytől";
+            Festmeny ujFestmeny = new Festmeny("ablak", "Vasarelly", "posztmodern", 0, 500, new DateTime(2019-09-20), false);
+            Console.WriteLine("Ez egy új festmény: " + ujFestmeny); //itt még 500
+            Console.WriteLine("Erre még nincs licit");
+            /*
+            while(ujFestmeny.LegmagasabbLicit<2000)
+            {
+                ujFestmeny.Licit(); //itt lesz 10001
+                Console.WriteLine();
+                Console.WriteLine(ujFestmeny); //itt írja ki az 1000-t
+                
+            }
+            */
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            while(ujFestmeny.LegmagasabbLicit < 3000)
+            {
+                Console.WriteLine("Adja meg az ön licitjét:");
+                int mertek = Convert.ToInt32(Console.ReadLine());
+                ujFestmeny.BekertLicit(mertek);
+                Console.WriteLine(ujFestmeny);
+            }
+            
+
+            Console.WriteLine();
+            //Console.WriteLine(ujFestmeny.Licit2());
+            Console.ReadLine();
         }
     }
 }
